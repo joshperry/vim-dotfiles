@@ -51,12 +51,25 @@ if has("gui_running")
     set lines=60 columns=160
 else
     if exists("+lines")
-	set lines=60
+"	set lines=60
     endif
     if exists("+columns")
-	set columns=160
+"	set columns=160
     endif
 endif 
+
+" Restore file's previous cursor position
+function! ResCur()
+  if line("'\"") <= line("$")
+    normal! g`"
+    return 1
+  endif
+endfunction
+
+augroup resCur
+  autocmd!
+  autocmd BufWinEnter * call ResCur()
+augroup END
 
 " ---------------
 " UI
@@ -70,7 +83,11 @@ set showcmd		" display incomplete commands
 set cursorline
 
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
-set viminfo='100,<50,s10,h
+" ViM, remember things on exit please
+" '100 remember marks for 100 files
+" <50 remember 50 register lines
+" h don't hlsearch in viminfo file
+set viminfo='100,<50,h
 
 " ---------------
 " Behaviors
@@ -114,7 +131,7 @@ cnoremap <silent> <C-cr> <CR>:noh<CR>
 " ---------------
 " NERDTree
 " ---------------
-nmap <silent><C-n> :NERDTree<CR>
+nmap <silent><C-n> :NERDTreeToggle<CR>
 nnoremap <leader>n :NERDTree<CR>
 nnoremap <leader>nf :NERDTreeFind<CR>
 nnoremap <leader>nc :NERDTreeClose<CR>
