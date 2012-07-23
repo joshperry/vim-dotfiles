@@ -38,6 +38,7 @@ set incsearch	"incremental and highlight search
 if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
+  colorscheme slate
 endif
 
 " In many terminal emulators the mouse works just fine, thus enable it.
