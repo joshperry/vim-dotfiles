@@ -15,6 +15,9 @@ Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'mattn/webapi-vim'
+Bundle 'mattn/gist-vim'
+Bundle 'elzr/vim-json'
 
 set directory^=$TMP//,$TEMP//,$TMPDIR//
 set nobackup
@@ -138,3 +141,8 @@ nnoremap <leader>nc :NERDTreeClose<CR>
 nnoremap <leader>nt :NERDTreeToggle<CR>
 let NERDTreeShowBookmarks=1
 let NERDTreeChDirMode=2 " Change the NERDTree directory to the root node
+
+" --------------
+" VimGist
+" --------------
+let g:gist_clip_command = 'pbcopy'
