@@ -108,7 +108,7 @@ set wildmode=list:longest
 set autoread           " Automatically reload changes if detected
 set history=768        " Number of things to remember in history.
 set cf                 " Enable error files & error jumping.
-set clipboard+=unnamed " Yanks go on clipboard instead.
+set clipboard=unnamed  " Yanks go on clipboard instead.
 set autowrite          " Writes on make/shell commands
 set timeoutlen=500     " Time to wait for a command (after leader for example)
 set foldlevelstart=99  " Remove folds
