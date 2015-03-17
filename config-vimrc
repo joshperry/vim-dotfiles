@@ -155,3 +155,9 @@ let NERDTreeChDirMode=2 " Change the NERDTree directory to the root node
 " VimGist
 " --------------
 let g:gist_clip_command = 'pbcopy'
+
+" --------------
+" Syntastic C++
+" --------------
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++ -pedantic -Wall -Wextra'
