@@ -21,6 +21,7 @@ Bundle 'elzr/vim-json'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-obsession'
+Bundle 'editorconfig/editorconfig-vim'
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'rodjek/vim-puppet'
 
