@@ -1,3 +1,5 @@
+#SUPERSEDED by joshperry/dotfiles
+
 VIM Dotfiles
 ============
 
