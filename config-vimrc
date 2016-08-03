@@ -9,12 +9,11 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " My Bundles here:
-"
-" original repos on github
 Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'pangloss/vim-javascript'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'elzr/vim-json'
@@ -24,6 +23,16 @@ Bundle 'tpope/vim-obsession'
 Bundle 'editorconfig/editorconfig-vim'
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'rodjek/vim-puppet'
+Plugin 'SirVer/ultisnips'
+
+" Needed by typescript server client tsuquyomi
+Bundle 'Shougo/vimproc.vim'
+" typescript server client
+Bundle 'Quramy/tsuquyomi' 
+
+" Just syntax highlighting
+Bundle 'leafgarland/typescript-vim' 
+Bundle 'jason0x43/vim-js-indent'
 
 set directory^=$TMP//,$TEMP//,$TMPDIR//
 set nobackup
@@ -89,7 +98,8 @@ augroup END
 " UI
 " ---------------
 set ruler  " Ruler on
-set nu  " Line numbers on
+set relativenumber " relative line numters
+set nu  " Enable "hybrid" line numbers
 set nowrap  " Line wrapping off
 set laststatus=2  " Always show the statusline
 set cmdheight=2
@@ -115,7 +125,7 @@ set cf                 " Enable error files & error jumping.
 set clipboard=unnamed  " Yanks go on clipboard instead.
 set autowrite          " Writes on make/shell commands
 set timeoutlen=500     " Time to wait for a command (after leader for example)
-set foldlevelstart=99  " Remove folds
+" set foldlevelstart=99  " Remove folds
 set formatoptions=crql
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
@@ -141,6 +151,11 @@ let mapleader=","
 nnoremap <leader>s :let @/ = ""<CR>
 " complete an incsearch without highlights
 cnoremap <silent> <C-cr> <CR>:noh<CR>
+" Navigate splits with ctrl-hjkl
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
 
 " ---------------
 " NERDTree
@@ -159,7 +174,22 @@ let NERDTreeChDirMode=2 " Change the NERDTree directory to the root node
 let g:gist_clip_command = 'pbcopy'
 
 " --------------
-" Syntastic C++
+" Syntastic
 " --------------
+let g:syntastic_mode_map = {
+	\ "mode": "active",
+	\ "passive_filetypes": ["typescript"] }
+
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++ -pedantic -Wall -Wextra'
+
+" --------------
+" UtilSnip
+" --------------
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="horizontal"
